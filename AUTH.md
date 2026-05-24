@@ -95,16 +95,31 @@ def verify_init_data(init_data: str, bot_token: str, max_age: int = 86400):
 
 ### Go
 
-Use `github.com/Telegram-Mini-Apps/init-data-golang`:
+Use `github.com/Telegram-Mini-Apps/init-data-golang`. Full API:
 
 ```go
 import initdata "github.com/Telegram-Mini-Apps/init-data-golang"
 
+// First-party (HMAC) validation. expIn=0 disables the freshness check (not recommended).
 if err := initdata.Validate(rawInitData, botToken, time.Hour); err != nil {
-    // reject
+    // reject — invalid hash or expired
 }
+
+// Parse without verifying (use only after Validate, or for read-only inspection).
 data, err := initdata.Parse(rawInitData)
+
+// Third-party (Ed25519) validation — no bot token needed, only the bot id.
+// Uses the production Telegram public key.
+if err := initdata.ValidateThirdParty(rawInitData, botID, time.Hour); err != nil { /* reject */ }
+// Test-environment variant: pass isTest=true to use the test public key.
+err = initdata.ValidateThirdPartyWithEnv(rawInitData, botID, time.Hour, false)
+
+// Sign helpers (useful for fixtures / tests).
+hash, _ := initdata.Sign(params, botToken, authDate)             // params: map[string]string
+hash, _ = initdata.SignQueryString(queryString, botToken, authDate)
 ```
+
+Both `Sign` variants strip `hash` and `auth_date` before computing, so you can pass either a pre-existing query string or a fresh map.
 
 ## Third-party validation (Ed25519)
 

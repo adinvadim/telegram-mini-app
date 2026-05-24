@@ -133,10 +133,10 @@ See [AUTH.md](AUTH.md) for: validation in non-Node backends, Ed25519 third-party
 
 ### JS / TS core
 
-- **`@telegram-apps/sdk`** — modern, modular, type-safe, framework-agnostic. The default choice in 2025+. Evolution of the old `@twa.js`.
-- **`@telegram-apps/sdk-react`** / **`@telegram-apps/sdk-vue`** / **`@telegram-apps/sdk-solid`** — framework bindings with hooks/composables.
-- **`@twa-dev/sdk`** — thin TS wrapper over the official script. Older but stable; fine for vanilla.
-- **`@vkruglikov/react-telegram-web-app`** — hooks/components (`useShowPopup`, `MainButton`, `BackButton`). Popular before `@telegram-apps/sdk-react`.
+- **`@telegram-apps/sdk`** — modern, modular, type-safe, framework-agnostic. The default choice in 2025+. Evolution of the old `@twa.js`. Sibling packages: `@telegram-apps/bridge` (low-level), `@telegram-apps/signals` (reactivity), `@telegram-apps/transformers`, `@telegram-apps/test-utils`.
+- **`@telegram-apps/sdk-react`** / **`@telegram-apps/sdk-vue`** / **`@telegram-apps/sdk-solid`** / **`@telegram-apps/sdk-svelte`** — framework bindings with hooks/composables/stores.
+- **`@twa-dev/sdk`** — thin TS wrapper over the official script (auto-loads it). Also ships React components (`MainButton`, `SecondaryButton`, `BottomBar`, `BackButton`). Older but stable.
+- **`@vkruglikov/react-telegram-web-app`** — `<WebAppProvider>` plus hooks (`useShowPopup`, `useCloudStorage`, `useInitData`, `useExpand`, `useThemeParams`, `useHapticFeedback`, `useScanQrPopup`, `useReadTextFromClipboard`, `useSwitchInlineQuery`, `useBackButton`) and components (`<MainButton>`, `<BackButton>`, `<SettingsButton>`). Useful migration target before `sdk-react`.
 
 ### UI kits
 
