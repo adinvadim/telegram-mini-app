@@ -16,9 +16,6 @@ The `@telegram-apps/*` monorepo (`Telegram-Mini-Apps/telegram-apps` on GitHub, o
 |---|---|
 | `@telegram-apps/sdk` | Default core. Modular, tree-shakable, signals-based, framework-agnostic. `init()` + per-feature `mount()`. |
 | `@telegram-apps/sdk-react` | React bindings. `useSignal(viewport.height)`-style hooks. |
-| `@telegram-apps/sdk-vue` | Vue 3 composables. |
-| `@telegram-apps/sdk-solid` | Solid.js bindings. |
-| `@telegram-apps/sdk-svelte` | Svelte stores. |
 | `@telegram-apps/bridge` | Low-level postEvent/onEvent wrapper if you do not want the high-level `sdk` API. |
 | `@telegram-apps/signals` | Reactive primitives used internally by the SDK; usable standalone. |
 | `@telegram-apps/init-data-node` | Server-side `initData` validation in Node. Battle-tested. |
